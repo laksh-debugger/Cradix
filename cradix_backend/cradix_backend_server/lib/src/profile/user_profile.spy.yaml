@@ -1,0 +1,23 @@
+
+class: UserProfile
+table: user_profile
+fields:
+  authUserId: String
+  fullName: String
+  college: String?
+  rollNumber: String?
+  course: String?
+  branch: String?
+  currentYear: String?
+  graduationYear: String?
+  linkedInUrl: String?
+  githubUrl: String?
+  bio: String?
+  skills: String?
+  education: String?
+  experience: String?
+  projects: String?
+indexes:
+  user_profile_auth_user_id_unique_idx:
+    fields: authUserId
+    unique: true

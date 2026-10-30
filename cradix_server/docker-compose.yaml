@@ -1,0 +1,44 @@
+services:
+  # Development services
+  postgres:
+    image: ghcr.io/serverpod/postgres:16
+    ports:
+      - "8090:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: cradix
+      POSTGRES_PASSWORD: "QWQgnuy9g5G0RBIALP4YX6QOR1w6O1Pw"
+    volumes:
+      - cradix_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:6.2.6
+    ports:
+      - "8091:6379"
+    command: redis-server --requirepass "ogFPNs0lz1bRojH7F4pMz5mEaOsZz6NV"
+    environment:
+      - REDIS_REPLICATION_MODE=master
+
+  # Test services
+  postgres_test:
+    image: ghcr.io/serverpod/postgres:16
+    ports:
+      - "9090:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: cradix_test
+      POSTGRES_PASSWORD: "vQU8LrNjfgQCacAJWHqorXVEVZRr3vbE"
+    volumes:
+      - cradix_test_data:/var/lib/postgresql/data
+
+  redis_test:
+    image: redis:6.2.6
+    ports:
+      - "9091:6379"
+    command: redis-server --requirepass "2TEa5n6DKoLbs-JaBVXcDoo0UM2zgCjl"
+    environment:
+      - REDIS_REPLICATION_MODE=master
+
+volumes:
+  cradix_data:
+  cradix_test_data:

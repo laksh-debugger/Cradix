@@ -1,0 +1,30 @@
+services:
+  # Development services
+  postgres:
+    image: ghcr.io/serverpod/postgres:16
+    ports:
+      - "8090:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: cradix_backend
+      POSTGRES_PASSWORD: "EkmMc58P0lhdx2I2wD1U1FhKvb6D3S4O"
+    volumes:
+      - cradix_backend_data:/var/lib/postgresql/data
+
+
+  # Test services
+  postgres_test:
+    image: ghcr.io/serverpod/postgres:16
+    ports:
+      - "9090:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: cradix_backend_test
+      POSTGRES_PASSWORD: "fUJOCr60U556pj0Wqhb9l1lGvLJ20Xep"
+    volumes:
+      - cradix_backend_test_data:/var/lib/postgresql/data
+
+
+volumes:
+  cradix_backend_data:
+  cradix_backend_test_data:
